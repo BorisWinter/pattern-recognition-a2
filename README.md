@@ -5,7 +5,7 @@ Apply to both datasets.
 
 1. SIFT (Abhishek)
 2. PCA (Boris)
-3. Mutual information
+3. Mutual information（Shi）
 4. Fourier transform (Abe)
 
 ## Classification
@@ -13,11 +13,11 @@ Apply to the raw data and the reduced data from both datasets.
 
 - k-NN (Boris)
 
-1. Decision tree
+1. Decision tree(Abe)
 2. Random forest
 3. Naive Bayes
 4. Logistic regression
-5. Support Vector Machine (Abe)
+5. Support Vector Machine （Shi）
 
 ## Clustering
 1. K-Means
