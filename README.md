@@ -11,6 +11,8 @@ Apply to both datasets.
 ## Classification
 Apply to the raw data and the reduced data from both datasets.
 
+- k-NN (Boris)
+
 1. Decision tree
 2. Random forest
 3. Naive Bayes
