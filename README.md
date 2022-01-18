@@ -18,6 +18,9 @@ Apply to the raw data and the reduced data from both datasets.
 3. Naive Bayes
 4. Logistic regression
 5. Support Vector Machine （Shi）
+    -gense dataset (MI)
+     ---accuracy on the training subset:1.000
+     ---accuracy on the test subset:0.994
 
 ## Clustering
 1. K-Means
