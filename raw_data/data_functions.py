@@ -19,10 +19,10 @@ def load_img_data():
             # print(img_path)
                 
             # Read image
-            image = cv2.imread(img_path)
+            image = cv2.imread(img_path, 0)
 
             # Resize image so all have the same dimensions
-            resized = cv2.resize(image, dsize=(100, 100))
+            resized = cv2.resize(image, dsize=(150, 150))
 
             # Flatten the image
             flat = resized.flatten()
@@ -40,6 +40,8 @@ def load_img_data():
 
 def load_num_data():
     # Import numerical data
-    data = pd.read_csv(f'genes/data.csv')
-    labels = pd.read_csv(f'genes/labels.csv')
+    dirname = os.path.dirname(__file__)
+    path = os.path.join(dirname, 'Genes')
+    data = pd.read_csv(os.path.join(path, 'data.csv'))
+    labels = pd.read_csv(os.path.join(path, 'labels.csv'))
     return data.iloc[:,1:], labels["Class"]

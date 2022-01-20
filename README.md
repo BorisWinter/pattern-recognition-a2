@@ -14,6 +14,14 @@ Apply to the raw data and the reduced data from both datasets.
 - k-NN (Boris)
 
 1. Decision tree(Abe)
+    - genes dataset (raw)
+        test accuracy: 0.95
+    - image dataset (raw)
+        test accuracy: 0.35
+    - genes dataset (ft)
+        test accuracy: 0.18
+    - image dataset (ft)
+        test accuracy: 0.35
 2. Random forest
 3. Naive Bayes
 4. Logistic regression
