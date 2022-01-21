@@ -2,3 +2,4 @@ __pycache__
 raw_data/BigCats
 raw_data/Genes
 raw_data/CreditCard
+svm_gense.pkl

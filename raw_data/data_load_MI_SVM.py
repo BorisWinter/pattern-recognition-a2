@@ -4,8 +4,8 @@ import numpy as np
 
 def load_genes_data():
     print("load data start")
-    features=pd.read_csv('./Genes/data.csv',header=None,low_memory=False)
-    labels=pd.read_csv('./Genes/labels.csv',header=None,low_memory=False)
+    features=pd.read_csv('./raw_data/Genes/data.csv',header=None,low_memory=False)
+    labels=pd.read_csv('./raw_data/Genes/labels.csv',header=None,low_memory=False)
 
     featr_nohead=features.drop(columns=0).drop(0)
     lbs_noH=labels.drop(columns=0).drop(0)

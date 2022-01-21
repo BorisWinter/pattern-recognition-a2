@@ -4,6 +4,9 @@ import pandas as pd
 
 def MI_feature_select(featr_nohead,lbs_noH,thre):
     print("feature selection start")
+    print("Feature drop")
+    #featr_nohead=features.drop(columns=0).drop(0)
+
     x_y_result = mutual_info_classif(featr_nohead,lbs_noH)
     sort_indx=np.argsort(-x_y_result)
     threshold_index=0

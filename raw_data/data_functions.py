@@ -42,9 +42,10 @@ def load_num_data():
     # Import numerical data
     dirname = os.path.dirname(__file__)
     path = os.path.join(dirname, 'Genes')
-    data = pd.read_csv(os.path.join(path, 'data.csv'))
-    labels = pd.read_csv(os.path.join(path, 'labels.csv'))
-    return data.iloc[:,1:], labels["Class"]
+    data = pd.read_csv(os.path.join(path, 'data.csv'), header=None, low_memory=False)
+    labels = pd.read_csv(os.path.join(path, 'labels.csv'), header=None, low_memory=False)
+    
+    return data.drop(columns=0).drop(0), labels.drop(columns=0).drop(0)
 
 if __name__=="__main__":
     print(load_num_data())
