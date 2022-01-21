@@ -3,14 +3,15 @@ if __name__ == "__main__":
     import sys
     sys.path.append("..")
 
+from audioop import cross
 from raw_data.data_functions import load_img_data, load_num_data
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
 from sklearn import metrics #Import scikit-learn metrics module for accuracy calculation
 from feature_selection.fourier_transform import ft_on_num_data, ft_on_img_data
 
-def decision_tree(img_data, labels):
-    X_train, X_test, y_train, y_test = train_test_split(img_data,
+def decision_tree(data, labels):
+    X_train, X_test, y_train, y_test = train_test_split(data,
                                                         labels,
                                                         test_size=0.2,
                                                         random_state=42,
@@ -27,6 +28,11 @@ def decision_tree(img_data, labels):
 
     # Find accuracy
     return metrics.accuracy_score(y_test, y_pred)
+
+def cross_val_decision_tree(data, labels, cv=5):
+    # Create Decision Tree classifer object
+    clf = DecisionTreeClassifier(criterion="entropy", max_depth=7)
+    return cross_val_score(clf, data, labels, cv=cv)
 
 def test_raw_data():
     print("Loading dataset for images...")
