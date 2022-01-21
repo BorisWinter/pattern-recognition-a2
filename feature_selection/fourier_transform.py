@@ -1,12 +1,13 @@
 import numpy as np
 import pandas as pd
+
+def fourier_transform_on_single_image(image):
+    f = np.fft.fft(image)
+    fshift = np.fft.fftshift(f)
+    return 10*np.log(np.abs(fshift))
+
 def ft_on_img_data(img_data):
-    new_df = pd.DataFrame(index=np.arange(len(img_data)), columns=np.arange(len(img_data.iloc[0])))
-    for idx, img in img_data.iterrows():
-        print(f"processing image #{idx+1} out of {len(img_data)}", end="\r")
-        f = np.fft.fft(img)
-        fshift = np.fft.fftshift(f)
-        new_df.append(pd.Series(20*np.log(np.abs(fshift))), ignore_index=True)
+    new_df = img_data.apply(fourier_transform_on_single_image, axis=1, result_type="expand")
     return new_df
 
 
@@ -21,4 +22,5 @@ if __name__=="__main__":
     from raw_data.data_functions import load_img_data
     img_data, img_labels = load_img_data()
 
-    ft_on_img_data(img_data)
+    print(img_data)
+    print(ft_on_img_data(img_data))
