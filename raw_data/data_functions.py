@@ -45,3 +45,6 @@ def load_num_data():
     data = pd.read_csv(os.path.join(path, 'data.csv'))
     labels = pd.read_csv(os.path.join(path, 'labels.csv'))
     return data.iloc[:,1:], labels["Class"]
+
+if __name__=="__main__":
+    print(load_num_data())
