@@ -19,7 +19,7 @@ def extractFeaturesFromImage(image_file):
     img_prcss= img_pre_process(img_org)
     img = cv2.resize(img_prcss, SHAPE, interpolation = cv2.INTER_CUBIC)
     img = img.flatten()
-    img = img / np.mean(img)
+    #img = img / np.mean(img)  # should we do the normalization?
     return img
    
 def img_pre_process(img):
