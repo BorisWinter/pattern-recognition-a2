@@ -2,6 +2,7 @@ import pandas as pd
 import os
 import cv2
 
+RESIZE_SHAPE = (150,150)
 
 def load_img_data():
     # Import the image data and convert to vectors
@@ -22,7 +23,7 @@ def load_img_data():
             image = cv2.imread(img_path, 0)
 
             # Resize image so all have the same dimensions
-            resized = cv2.resize(image, dsize=(150, 150))
+            resized = cv2.resize(image, dsize=RESIZE_SHAPE)
 
             # Flatten the image
             flat = resized.flatten()
