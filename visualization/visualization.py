@@ -21,7 +21,7 @@ def create_conf_matrix(labels, pred_labels, title = "Confusion Matrix"):
     ax.set_ylabel("True class", fontsize=30)
     ax.set_title(title, fontsize=40, pad=20)
 
-def simple_pca_line_plot(y, title="Line Plot"):
+def simple_pca_line_plot(y, title="Line Plot", ylabel="y"):
     """
     Takes a sequence of data.
     Displays a simple line plot.
@@ -30,5 +30,5 @@ def simple_pca_line_plot(y, title="Line Plot"):
     plt.plot(y)
     ax.tick_params(labelsize=20)
     ax.set_xlabel("Number of principal components", fontsize=30)
-    ax.set_ylabel("Test accuracy", fontsize=30)
-    ax.set_title("Test accuracy per number of principal components", fontsize=40, pad=20)
+    ax.set_ylabel(ylabel, fontsize=30)
+    ax.set_title(title, fontsize=40, pad=20)
