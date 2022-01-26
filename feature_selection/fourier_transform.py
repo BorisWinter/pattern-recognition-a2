@@ -19,8 +19,10 @@ def ft_on_num_data(num_data):
 if __name__=="__main__":
     import sys
     sys.path.append("..")
+    from classification.decision_tree import decision_tree
     from raw_data.data_functions import load_img_data
     img_data, img_labels = load_img_data()
 
-    print(img_data)
-    print(ft_on_img_data(img_data))
+    ft = ft_on_img_data(img_data)
+
+    print(decision_tree(ft, img_labels))

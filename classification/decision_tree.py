@@ -5,12 +5,12 @@ if __name__ == "__main__":
 
 from audioop import cross
 from raw_data.data_functions import load_img_data, load_num_data
-from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.model_selection import train_test_split, cross_validate
 from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
 from sklearn import metrics #Import scikit-learn metrics module for accuracy calculation
 from feature_selection.fourier_transform import ft_on_num_data, ft_on_img_data
 
-def decision_tree(data, labels):
+def decision_tree(data, labels, depth=5):
     X_train, X_test, y_train, y_test = train_test_split(data,
                                                         labels,
                                                         test_size=0.2,
@@ -18,7 +18,7 @@ def decision_tree(data, labels):
                                                         stratify=labels)
 
     # Create Decision Tree classifer object
-    clf = DecisionTreeClassifier(criterion="entropy", max_depth=7)
+    clf = DecisionTreeClassifier(criterion="entropy", max_depth=depth)
 
     # Train Decision Tree Classifer
     clf = clf.fit(X_train,y_train)
@@ -27,12 +27,16 @@ def decision_tree(data, labels):
     y_pred = clf.predict(X_test)
 
     # Find accuracy
-    return metrics.accuracy_score(y_test, y_pred)
+    return (metrics.accuracy_score(y_test, y_pred), metrics.f1_score(y_test, y_pred, average="weighted"), y_pred)
 
-def cross_val_decision_tree(data, labels, cv=5):
+def cross_val_decision_tree(data, labels, cv=5, depth=5):
     # Create Decision Tree classifer object
-    clf = DecisionTreeClassifier(criterion="entropy", max_depth=7)
-    return cross_val_score(clf, data, labels, cv=cv)
+    clf = DecisionTreeClassifier(criterion="entropy", max_depth=depth)
+
+    result = cross_validate(clf, data, labels, cv=cv, scoring=["accuracy", "f1_weighted"])
+    test_acc = result["test_accuracy"].mean()
+    test_f1 = result["test_f1_weighted"].mean()
+    return (test_acc, test_f1)
 
 def test_raw_data():
     print("Loading dataset for images...")
