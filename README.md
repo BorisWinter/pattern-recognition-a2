@@ -3,10 +3,12 @@
 ## Requirements
 All code is written in Python. All required packages and libraries can be installed through the requirements file:
 
-*pip install -r requirements.txt*
+```bash
+pip install -r requirements.txt
+```
 
 ## Running the code
-The entire pipeline can be run through the *main.ipynb* Python Notebook file. This file is divided into sections corresponding to the components of the pipeline. In each section, the code for the performed experiments can be found. Code that was used early on in the process (like parameter sweeps) may have been commented out. The data, algorithms, and functions for each component can be found in their corresponding subfolder:
+The entire pipeline can be run through the *main.ipynb* Python Notebook file. This file is divided into sections corresponding to the components of the pipeline. In each section, the code for the performed experiments can be found. Code that was used early on in the process (like parameter sweeps) may have been commented out. The data, algorithms, and functions for each component can be found in their corresponding subfolder. *Note that the data needs to be in the folders mentioned below, otherwise the pipeline does not work.*
 
 ### Data functions
 Functions regarding data loading etc. can be found in *raw_data/data_functions.py*
