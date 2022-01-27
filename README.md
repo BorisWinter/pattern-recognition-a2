@@ -1,39 +1,31 @@
-# Pattern Recognition - Assignment 2
+# Pattern Recognition - Assignment 2 - Group 10
 
-## Feature extraction
-Apply to both datasets.
+## Requirements
+All code is written in Python. All required packages and libraries can be installed through the requirements file:
 
-1. SIFT (Abhishek)
-2. PCA (Boris)
-3. Mutual information（Shi）
-4. Fourier transform (Abe)
+*pip install -r requirements.txt*
 
-## Classification
-Apply to the raw data and the reduced data from both datasets.
+## Running the code
+The entire pipeline can be run through the *main.ipynb* Python Notebook file. This file is divided into sections corresponding to the components of the pipeline. In each section, the code for the performed experiments can be found. Code that was used early on in the process (like parameter sweeps) may have been commented out. The data, algorithms, and functions for each component can be found in their corresponding subfolder:
 
-- k-NN (Boris)
+### Data functions
+Functions regarding data loading etc. can be found in *raw_data/data_functions.py*
 
-1. Decision tree(Abe)
-    - genes dataset (raw)
-        test accuracy: 0.95
-    - image dataset (raw)
-        test accuracy: 0.35
-    - genes dataset (ft)
-        test accuracy: 0.18
-    - image dataset (ft)
-        test accuracy: 0.35
-2. Random forest
-3. Naive Bayes
-4. Logistic regression
-5. Support Vector Machine （Shi）
-    - gense dataset (MI)
-     --- accuracy on the training subset:1.000
-     --- accuracy on the test subset:0.994
-    - image dataset (MI)
-     --- accuracy on the training subset:0.963
-     --- accuracy on the test subset:0.353
+### Genes data
+- Data is expected to be in *raw_data/genes/data.csv*
+- Labels are expected to be in *raw_data/genes/labels.csv*
 
-## Clustering
-1. K-Means
-2. Fuzzy C-Means (Abe)
-3. DBSCAN
+### Image data
+- Animal images are expected to be in *raw_data/BigCats/[Animal]/*
+
+### Feature selection
+- Feature selection algorithms can be found in *feature_selection/[algorithm].py*
+
+### Classification
+- Classification algorithms can be found in *classification/[algorithm].py*
+
+### Clustering
+- Clustering algorithms can be found in *clustering/[algorithm].py*
+
+### Visualization
+- Functions that were used for data visualization can be found in *visualization/visualization.py*
