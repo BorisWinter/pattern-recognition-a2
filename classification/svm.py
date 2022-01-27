@@ -2,8 +2,10 @@ from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split,GridSearchCV
 from sklearn.model_selection import StratifiedKFold,cross_validate
 import pickle,os
+import numpy as np
 import pandas as pd 
 from sklearn.metrics import accuracy_score, f1_score
+from feature_selection.SIFT import cal_vec
 
 def svm_genes(Feat_slct,lbs_noH):
     print("svm train start")
@@ -58,12 +60,18 @@ def svm_images(X_train, X_test, y_train, y_test,C=100,kernel='rbf',gamma=0.001):
         model=svm.fit(X_train, y_train)
         pickle.dump(model, open("./svm_cat.pkl", "wb"))
         print("new model saved")
-        
-    pred_labels = model.predict(X_test)
+    
+    centers = np.load("./svm_centers.npy")
+    #计算每张图片的特征向量
+    data_vec,labels = cal_vec(X_test, y_test)
+    
+    pred_labels = model.predict(data_vec)
     acc = accuracy_score(y_test, pred_labels)
     f1 = f1_score(y_test, pred_labels, average="weighted")
     
     print("accuracy on the training subset:{:.3f}".format(model.score(X_train,y_train)))
-    print("accuracy on the test subset:{:.3f}".format(model.score(X_test,y_test)))
+    print("accuracy on the test subset:{:.3f}".format(model.score(data_vec,labels)))
     #print("success")
+    
+    
     return acc, f1, pred_labels
