@@ -50,7 +50,7 @@ def svm_images_cross_val(feature_array,label_array,n_splits = 5,C=100,kernel='rb
     return acc, f1
 
 
-def svm_images(X_train, X_test, y_train, y_test,C=100,kernel='rbf',gamma=0.001):
+def svm_images_sift(X_train, X_test, y_train, y_test,C=100,kernel='rbf',gamma=0.001):
     print("svm train start")
     if os.path.isfile("svm_cat11.pkl"):
         print("model exist")
@@ -71,6 +71,28 @@ def svm_images(X_train, X_test, y_train, y_test,C=100,kernel='rbf',gamma=0.001):
     
     print("accuracy on the training subset:{:.3f}".format(model.score(X_train,y_train)))
     print("accuracy on the test subset:{:.3f}".format(model.score(data_vec,labels)))
+    #print("success")
+    
+    
+    return acc, f1, pred_labels
+
+def svm_images(X_train, X_test, y_train, y_test,C=10,kernel='rbf',gamma=0.001):
+    print("svm train start")
+    if os.path.isfile("svm_cat11.pkl"):
+        print("model exist")
+        grid_result = pickle.load(open("svm_cat.pkl", "rb"))
+    else:
+        svm = SVC(C=C,kernel=kernel,gamma=gamma,probability=True)#C=100,kernel='rbf',gamma=0.001,
+        model=svm.fit(X_train, y_train)
+        pickle.dump(model, open("./svm_cat.pkl", "wb"))
+        print("new model saved")
+    
+    pred_labels = model.predict(X_test)
+    acc = accuracy_score(y_test, pred_labels)
+    f1 = f1_score(y_test, pred_labels, average="weighted")
+    
+    print("accuracy on the training subset:{:.3f}".format(model.score(X_train,y_train)))
+    print("accuracy on the test subset:{:.3f}".format(model.score(X_test,y_test)))
     #print("success")
     
     
