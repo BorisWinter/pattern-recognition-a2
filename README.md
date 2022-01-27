@@ -19,13 +19,13 @@ Functions regarding data loading etc. can be found in *raw_data/data_functions.p
 - Animal images are expected to be in *raw_data/BigCats/[Animal]/*
 
 ### Feature selection
-- Feature selection algorithms can be found in *feature_selection/[algorithms].py*
+- Feature selection algorithms can be found in *feature_selection/[algorithm].py*
 
 ### Classification
-- Classification algorithms can be found in *classification/[algorithms].py*
+- Classification algorithms can be found in *classification/[algorithm].py*
 
 ### Clustering
-- Clustering algorithms can be found in *clustering/[algorithms].py*
+- Clustering algorithms can be found in *clustering/[algorithm].py*
 
 ### Visualization
 - Functions that were used for data visualization can be found in *visualization/visualization.py*
